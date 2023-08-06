@@ -1,0 +1,11 @@
+{
+  "name": "duplicate-image-finder",
+  "version": "1.0.0",
+  "description": "Goes through a folder of images and identifies duplicates, even if the file name is different.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
