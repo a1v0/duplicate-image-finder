@@ -16,4 +16,12 @@ export const findDuplicates = () => {
         console.error("ERROR: ENVIRONMENT VARIABLES FAILED TO LOAD");
         return;
     }
+
+    console.log("Loading iCloud files");
+    return fs.readdir(iCloudDir).then((contents: Array<string>) => {
+        console.log("Local files loaded.");
+
+        for (let fileName of contents) {
+        }
+    });
 };
