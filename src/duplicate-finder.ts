@@ -51,17 +51,37 @@ export const findDuplicates = () => {
 };
 
 const constructFileTree = (
-    fileStats: (string[] | Stats)[],
-    fileName: Array<string>
+    unfilteredFileStats: (string[] | Stats)[],
+    fileNames: Array<string>
 ) => {
-    const fileTree = {};
-    for (let i = 0; i < fileStats.length; ++i) {
-        if (fileStats instanceof String) continue;
+    const fileStats: Array<Stats> = [];
+    unfilteredFileStats.forEach((unfilteredFileStat) => {
+        if (unfilteredFileStat instanceof Stats) {
+            fileStats.push(unfilteredFileStat);
+        }
+    });
 
-        // extract file extension
-        // if extension property exists, enter
-        // if not create
-        // if size property exists, append file name
-        // if not, create and append
+    const fileTree: { [key: string]: { [key: string]: Array<string> } } = {};
+    for (let i = 0; i < fileStats.length; ++i) {
+        if (!fileStats[i].hasOwnProperty("size")) continue;
+
+        const extensionRegex = /.\w+$/i;
+        const extensionMatch = fileNames[i].match(extensionRegex);
+        const extension = extensionMatch
+            ? extensionMatch[0].toLowerCase()
+            : "error";
+
+        if (!fileTree.hasOwnProperty(extension)) {
+            const emptyObject: { [key: string]: Array<string> } = {};
+            fileTree[extension] = emptyObject;
+        }
+
+        const fileSize = String(fileStats[i].size);
+        if (!fileTree[extension].hasOwnProperty(fileSize)) {
+            fileTree[extension][fileSize] = [];
+        }
+
+        fileTree[extension][fileSize].push(fileNames[i]);
     }
+    console.dir(fileTree);
 };
