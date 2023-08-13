@@ -1,17 +1,19 @@
 {
-  "name": "duplicate-image-finder",
-  "version": "1.0.0",
-  "description": "Goes through a folder of images and identifies duplicates, even if the file name is different.",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "dotenv": "^16.3.1"
-  },
-  "devDependencies": {
-    "@types/node": "^20.4.8"
-  }
+    "name": "duplicate-image-finder",
+    "version": "1.0.0",
+    "description": "Goes through a folder of images and identifies duplicates, even if the file name is different.",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "comp": "node src/compare-local-with-icloud.js",
+        "dupl": "node src/duplicate-finder.js"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "dotenv": "^16.3.1"
+    },
+    "devDependencies": {
+        "@types/node": "^20.4.8"
+    }
 }
