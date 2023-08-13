@@ -1,5 +1,4 @@
-const dotenv = require("dotenv").config();
-const fs = require("fs/promises");
+import { compareLocalWithICloud } from "./compare-local-with-icloud";
 
 (() => {
     // the first two args are spoken for. [2] is the received from CLI
