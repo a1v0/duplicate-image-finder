@@ -26,7 +26,10 @@ export const compareLocalWithICloud = () => {
 
             loadFiles(fileName)
                 .then((files) => {
-                    const [localFile, iCloudFile] = files;
+                    const [fileName, localFile, iCloudFile] = files;
+                    if (localFile.size !== iCloudFile.size) {
+                        return moveFile(fileName);
+                    }
                 })
                 .catch((error) => {
                     console.log(error);
@@ -41,15 +44,22 @@ export const compareLocalWithICloud = () => {
     // if size is different, add file name to an array
     // at end, move all files in array to renaming folder
     // check folder exists before moving. Ensure it doesn't auto-create a folder
+
     // before renaming those files, better to do a manual check to see if it's working the way it should
     // before deleting files that aren't for renaming, best to check manually to see if it's working the way it should
 };
 
 const loadFiles = (fileName: string) => {
-    console.log("Running comparison on " + fileName);
     const localFile = fs.stat(`${localDir}/${fileName}`);
     const iCloudFile = fs.stat(`${iCloudDir}/${fileName}`);
-    return Promise.all([localFile, iCloudFile]);
+    return Promise.all([fileName, localFile, iCloudFile]);
 };
 
-const moveFile = () => {};
+const moveFile = (fileName: string) => {
+    console.log(`File ${fileName} moved for renaming.`);
+
+    return fs.rename(
+        `${localDir}/${fileName}`,
+        `${localDir}/rename/${fileName}`
+    );
+};
