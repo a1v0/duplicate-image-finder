@@ -21,7 +21,13 @@ export const findDuplicates = () => {
     return fs.readdir(iCloudDir).then((contents: Array<string>) => {
         console.log("Local files loaded.");
 
+        const fileStats = [];
+
         for (let fileName of contents) {
+            const currentFile = fs.stat(`${iCloudDir}/${fileName}`);
+            fileStats.push(currentFile);
         }
+
+        return Promise.all(fileStats);
     });
 };
