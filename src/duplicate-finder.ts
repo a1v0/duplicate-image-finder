@@ -1,6 +1,3 @@
-const dotenv = require("dotenv").config();
-const fs = require("fs/promises");
-
 // get path from environment variable
 // gain access to contents of folder
 // access details of files e.g. size and type
