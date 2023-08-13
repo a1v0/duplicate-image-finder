@@ -53,4 +53,15 @@ export const findDuplicates = () => {
 const constructFileTree = (
     fileStats: (string[] | Stats)[],
     fileName: Array<string>
-) => {};
+) => {
+    const fileTree = {};
+    for (let i = 0; i < fileStats.length; ++i) {
+        if (fileStats instanceof String) continue;
+
+        // extract file extension
+        // if extension property exists, enter
+        // if not create
+        // if size property exists, append file name
+        // if not, create and append
+    }
+};
