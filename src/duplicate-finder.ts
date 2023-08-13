@@ -27,12 +27,17 @@ export const findDuplicates = () => {
 
             for (let fileName of contents) {
                 const currentFile = fs.stat(`${iCloudDir}/${fileName}`);
-                fileStats.push(currentFile);
+                fileStats.push({ currentFile, fileName });
             }
+            fileStats.push(contents); // ensures we have a reference to all file names in the correct order. Not super elegant, but it avoids messing around with weird Promise logic
 
             return Promise.all(fileStats);
         })
         .then((fileStats) => {
-            console.table(fileStats);
+            const fileNames:
+                | Array<string>
+                | undefined
+                | { currentFile: Promise<any>; fileName: string } =
+                fileStats.pop();
         });
 };
