@@ -46,7 +46,19 @@ export const findDuplicates = () => {
             }
         })
         .then((fileTree) => {
-            return removeSingles(fileTree);
+            //
+            //
+            //
+            // nested for loop to find any property with length > 1
+            //
+            // then run updateCSV method for each one
+            //
+            //
+            //
+            //
+            //
+            //
+            //
         })
         .catch((error) => {
             console.error(error);
@@ -89,15 +101,11 @@ const constructFileTree = (
     return fileTree;
 };
 
-const removeSingles = (fileTree: {
-    [key: string]: { [key: string]: Array<string> };
-}) => {
+const updateCSV = (fileNames: Array<string>) => {
     //
     //
     //
-    // nested for loop to find any property with length > 1
-    //
-    //
+    // separate with commas and append to CSV
     //
     //
     //
