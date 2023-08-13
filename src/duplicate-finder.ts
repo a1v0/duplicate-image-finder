@@ -39,5 +39,15 @@ export const findDuplicates = () => {
                 | undefined
                 | { currentFile: Promise<any>; fileName: string } =
                 fileStats.pop();
+
+            // this check is necessary because of TypeScript
+            if (Array.isArray(fileNames)) {
+                console.log(fileNames[0]);
+            } else {
+                return Promise.reject("List of file names not found.");
+            }
+        })
+        .catch((error) => {
+            console.error(error);
         });
 };
