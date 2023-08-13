@@ -1,4 +1,5 @@
 import { compareLocalWithICloud } from "./compare-local-with-icloud";
+import { findDuplicates } from "./duplicate-finder";
 
 (() => {
     // the first two args are spoken for. [2] is the received from CLI
@@ -12,6 +13,7 @@ import { compareLocalWithICloud } from "./compare-local-with-icloud";
 
     if (action === "dupl") {
         console.log("Identifying duplicate files in iCloud directory.\n");
+        findDuplicates();
         return;
     }
 
