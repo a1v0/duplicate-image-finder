@@ -12,13 +12,25 @@ export const compareLocalWithICloud = () => {
     }
 
     console.log("Loading local files.");
-    return fs.readdir(localDir).then((contents: Array<any>) => {
+    return fs.readdir(localDir).then((contents: Array<string>) => {
         console.log("Local files loaded.");
 
         for (let fileName of contents) {
-            loadFiles(fileName).then((files) => {
-                const [localFile, iCloudFile] = files;
-            });
+            if (
+                !fileName.includes(".") ||
+                fileName.endsWith(".txt") ||
+                fileName.endsWith(".TXT")
+            ) {
+                continue;
+            }
+
+            loadFiles(fileName)
+                .then((files) => {
+                    const [localFile, iCloudFile] = files;
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
         }
     });
 
@@ -35,8 +47,8 @@ export const compareLocalWithICloud = () => {
 
 const loadFiles = (fileName: string) => {
     console.log("Running comparison on " + fileName);
-    const localFile = fs.readFile(`${localDir}/${fileName}`),
-        iCloudFile = fs.readFile(`${iCloudDir}/${fileName}`);
+    const localFile = fs.stat(`${localDir}/${fileName}`);
+    const iCloudFile = fs.stat(`${iCloudDir}/${fileName}`);
     return Promise.all([localFile, iCloudFile]);
 };
 
