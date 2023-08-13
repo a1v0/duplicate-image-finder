@@ -8,6 +8,7 @@
 import * as dotenv from "dotenv";
 dotenv.config();
 import * as fs from "fs/promises";
+import { Stats } from "fs";
 
 const iCloudDir: string = process.env.ICLOUD_PATH ?? "";
 
@@ -27,22 +28,19 @@ export const findDuplicates = () => {
 
             for (let fileName of contents) {
                 const currentFile = fs.stat(`${iCloudDir}/${fileName}`);
-                fileStats.push({ currentFile, fileName });
+                fileStats.push(currentFile);
             }
             fileStats.push(contents); // ensures we have a reference to all file names in the correct order. Not super elegant, but it avoids messing around with weird Promise logic
 
             return Promise.all(fileStats);
         })
         .then((fileStats) => {
-            const fileNames:
-                | Array<string>
-                | undefined
-                | { currentFile: Promise<any>; fileName: string } =
+            const fileNames: Array<string> | Stats | undefined =
                 fileStats.pop();
 
             // this check is necessary because of TypeScript
-            if (Array.isArray(fileNames)) {
-                console.log(fileNames[0]);
+            if (Array.isArray(fileStats) && Array.isArray(fileNames)) {
+                return constructFileTree(fileStats, fileNames);
             } else {
                 return Promise.reject("List of file names not found.");
             }
@@ -51,3 +49,8 @@ export const findDuplicates = () => {
             console.error(error);
         });
 };
+
+const constructFileTree = (
+    fileStats: (string[] | Stats)[],
+    fileName: Array<string>
+) => {};
