@@ -45,6 +45,9 @@ export const findDuplicates = () => {
                 return Promise.reject("List of file names not found.");
             }
         })
+        .then((fileTree) => {
+            return removeSingles(fileTree);
+        })
         .catch((error) => {
             console.error(error);
         });
@@ -83,5 +86,23 @@ const constructFileTree = (
 
         fileTree[extension][fileSize].push(fileNames[i]);
     }
-    console.dir(fileTree);
+    return fileTree;
+};
+
+const removeSingles = (fileTree: {
+    [key: string]: { [key: string]: Array<string> };
+}) => {
+    //
+    //
+    //
+    // nested for loop to find any property with length > 1
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
 };
