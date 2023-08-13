@@ -7,6 +7,7 @@ const fs = require("fs/promises");
 
     if (action === "comp") {
         console.log("Running comparison between local and iCloud files.");
+        compareLocalWithICloud();
         return;
     }
 
