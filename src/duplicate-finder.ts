@@ -60,7 +60,7 @@ export const findDuplicates = () => {
             );
         })
         .then(() => {
-            console.log("Process completed successfully.");
+            console.log("Duplicate identification process completed.");
             //
             //
             // at this point, get Node to open the files in a program window
@@ -73,9 +73,7 @@ export const findDuplicates = () => {
             // run the "open [FILENAME]" command for each item on each row
             // this should open up all images for the user to check
             // wait for the user to hit ENTER
-            // once ENTER is pressed, append ", DONE" to the CSV row (or add it to the start)
-            // - this might not be so easy, unless there's a method called updateFile or something
-            // then go to the next line of the file
+            // once ENTER is pressed, go to the next line of the file
             //
             //
             //
