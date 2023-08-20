@@ -63,19 +63,19 @@ export const findDuplicates = () => {
             console.log("Process completed successfully.");
             //
             //
+            // at this point, get Node to open the files in a program window
             //
             //
+            // https://stackabuse.com/executing-shell-commands-with-node-js/
+            // this explains how the exec() method can run terminal commands for us
             //
-            //
-            //
-            //
-            //
-            //
-            // can we at this point get Node to open the files in a program window?
-            //
-            //
-            //
-            //
+            // once the CSV is written, open it up again and go through row by row
+            // run the "open [FILENAME]" command for each item on each row
+            // this should open up all images for the user to check
+            // wait for the user to hit ENTER
+            // once ENTER is pressed, append ", DONE" to the CSV row (or add it to the start)
+            // - this might not be so easy, unless there's a method called updateFile or something
+            // then go to the next line of the file
             //
             //
             //
