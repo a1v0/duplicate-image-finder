@@ -60,7 +60,10 @@ export const findDuplicates = () => {
             );
         })
         .then(() => {
-            console.log("Duplicate identification process completed.");
+            console.log("\nDuplicate identification process completed.\n");
+            return fs.readFile("duplicate-files.csv", "utf-8");
+        })
+        .then((fileContents) => {
             //
             //
             // at this point, get Node to open the files in a program window
@@ -77,6 +80,14 @@ export const findDuplicates = () => {
             //
             //
             //
+            const fileRows = fileContents.split("\n");
+            for (let i = 1; i < fileRows.length; ++i) {
+                const files = fileRows[i].split(",");
+                files.forEach((file) => {
+                    // ask for user input, e.g. "Open next files?"
+                    // then open all files
+                });
+            }
         })
         .catch((error) => {
             console.error(error);
