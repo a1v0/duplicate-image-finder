@@ -41,7 +41,7 @@ export const findDuplicates = () => {
         .then((fileTree) => {
             const csvData = identifyDuplicates(fileTree);
             return fs.appendFile(
-                "duplicate-files.csv",
+                "src/duplicate-files.csv",
                 `\n${csvData}`,
                 "utf-8"
             );
@@ -108,4 +108,5 @@ const identifyDuplicates = (fileTree: {
 
     const csvData = csvLines.join("\n");
     console.log(`New duplicates found: ${csvData}`);
+    return csvData;
 };
