@@ -39,20 +39,7 @@ export const findDuplicates = () => {
             }
         })
         .then((fileTree) => {
-            const csvLines = [];
-            for (let fileType in fileTree) {
-                const files = fileTree[fileType];
-                for (let fileSize in files) {
-                    if (files[fileSize].length > 1) {
-                        const csvLine = files[fileSize].join(",");
-                        csvLines.push(csvLine);
-                    }
-                }
-            }
-
-            const csvData = csvLines.join("\n");
-            console.log(`New duplicates found: ${csvData}`);
-
+            const csvData = identifyDuplicates(fileTree);
             return fs.appendFile(
                 "duplicate-files.csv",
                 `\n${csvData}`,
@@ -130,16 +117,22 @@ const constructFileTree = (
     return fileTree;
 };
 
-const updateCSV = (fileNames: Array<string>) => {
-    //
-    //
-    //
-    // separate with commas and append to CSV
-    //
-    //
-    //
-    //
-    //
-    //
-    //
+const identifyDuplicates = (fileTree: {
+    [key: string]: {
+        [key: string]: string[];
+    };
+}) => {
+    const csvLines = [];
+    for (let fileType in fileTree) {
+        const files = fileTree[fileType];
+        for (let fileSize in files) {
+            if (files[fileSize].length > 1) {
+                const csvLine = files[fileSize].join(",");
+                csvLines.push(csvLine);
+            }
+        }
+    }
+
+    const csvData = csvLines.join("\n");
+    console.log(`New duplicates found: ${csvData}`);
 };
