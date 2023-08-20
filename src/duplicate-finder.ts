@@ -51,7 +51,7 @@ export const findDuplicates = () => {
             }
 
             const csvData = csvLines.join("\n");
-            console.log(csvData);
+            console.log(`New duplicates found: ${csvData}`);
 
             return fs.appendFile(
                 "duplicate-files.csv",
@@ -61,6 +61,24 @@ export const findDuplicates = () => {
         })
         .then(() => {
             console.log("Process completed successfully.");
+            //
+            //
+            //
+            //
+            //
+            //
+            //
+            //
+            //
+            //
+            // can we at this point get Node to open the files in a program window?
+            //
+            //
+            //
+            //
+            //
+            //
+            //
         })
         .catch((error) => {
             console.error(error);
