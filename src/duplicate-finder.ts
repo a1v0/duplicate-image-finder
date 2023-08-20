@@ -39,19 +39,28 @@ export const findDuplicates = () => {
             }
         })
         .then((fileTree) => {
-            //
-            //
-            //
-            // nested for loop to find any property with length > 1
-            //
-            // then run updateCSV method for each one
-            //
-            //
-            //
-            //
-            //
-            //
-            //
+            const csvLines = [];
+            for (let fileType in fileTree) {
+                const files = fileTree[fileType];
+                for (let fileSize in files) {
+                    if (files[fileSize].length > 1) {
+                        const csvLine = files[fileSize].join(",");
+                        csvLines.push(csvLine);
+                    }
+                }
+            }
+
+            const csvData = csvLines.join("\n");
+            console.log(csvData);
+
+            return fs.appendFile(
+                "duplicate-files.csv",
+                `\n${csvData}`,
+                "utf-8"
+            );
+        })
+        .then(() => {
+            console.log("Process completed successfully.");
         })
         .catch((error) => {
             console.error(error);
