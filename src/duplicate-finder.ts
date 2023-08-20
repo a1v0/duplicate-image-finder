@@ -47,34 +47,7 @@ export const findDuplicates = () => {
             );
         })
         .then(() => {
-            console.log("\nDuplicate identification process completed.\n");
-            return fs.readFile("duplicate-files.csv", "utf-8");
-        })
-        .then((fileContents) => {
-            //
-            //
-            // at this point, get Node to open the files in a program window
-            //
-            //
-            // https://stackabuse.com/executing-shell-commands-with-node-js/
-            // this explains how the exec() method can run terminal commands for us
-            //
-            // once the CSV is written, open it up again and go through row by row
-            // run the "open [FILENAME]" command for each item on each row
-            // this should open up all images for the user to check
-            // wait for the user to hit ENTER
-            // once ENTER is pressed, go to the next line of the file
-            //
-            //
-            //
-            const fileRows = fileContents.split("\n");
-            for (let i = 1; i < fileRows.length; ++i) {
-                const files = fileRows[i].split(",");
-                files.forEach((file) => {
-                    // ask for user input, e.g. "Open next files?"
-                    // then open all files
-                });
-            }
+            console.log("\nDuplicate identification process completed.");
         })
         .catch((error) => {
             console.error(error);
