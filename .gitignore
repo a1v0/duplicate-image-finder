@@ -1,4 +1,5 @@
 .env
 .vscode
 *.js
+*.csv
 node_modules
