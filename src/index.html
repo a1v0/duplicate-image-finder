@@ -18,7 +18,8 @@
             padding: 10px;
         }
 
-        #current-row {
+        #current-row,
+        #quantity {
             font-weight: bold;
         }
     </style>
@@ -27,6 +28,7 @@
 <body>
     <h1>iCloud Duplicate Finder</h1>
     <p>Current row: <span id="current-row">n/a</span></p>
+    <p>Quantity: <span id="quantity">n/a</span></p>
     <button onclick="displayImages()">Start/New Row</button>
     <main id="image-section"></main>
 
@@ -175,12 +177,14 @@ IMG_5766(1).MOV,IMG_5766.MOV`;
 
         const rowCounter = document.getElementById("current-row");
         const imageSection = document.getElementById("image-section");
+        const quantity = document.getElementById("quantity");
 
         function displayImages() {
             rowCounter.innerText = rowIndex;
             imageSection.innerHTML = "";
 
             const fileNames = csvRows[rowIndex].split(",");
+            quantity.innerText = fileNames.length;
             fileNames.forEach((fileName) => {
                 const header = document.createElement("h2");
                 header.innerText = fileName;
