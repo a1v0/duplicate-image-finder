@@ -10,9 +10,9 @@ The two available arguments are listed below.
 
 ## `dupl`
 
-Goes through a folder of images and identifies size duplicates, even if the file name is different.
+Goes through a folder of images and identifies size duplicates, even if the file name is different. It writes its results to a CSV file.
 
-It writes its results to a CSV file. A separate Python script, `open-duplicate-files.py`, then opens each set of potentially identical files in turn, so that the user can delete or ignore as necessary.
+Once this is done, copy the contents of the CSV file into the `index.html` file and run that statically in a browser. It will display a row's worth of images at a time. If you spot any true duplicates, you must delete them manually.
 
 ## `comp`
 
