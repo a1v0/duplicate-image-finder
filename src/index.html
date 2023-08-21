@@ -1,26 +1,27 @@
-<!-- 
-    Plan:
-    - import CSV file somehow (might have to be hard-coded)
-    - parse the data
-    - create a form
-    - on click of a button, all images are loaded
-    - once images are assessed, user clicks button again
-    - next lot of images is shown
-    - user has to manually delete files as necessary
- -->
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Duplicate Finder</title>
 </head>
 
 <body>
+    <!-- 
+        Plan:
+        - import CSV file somehow (might have to be hard-coded)
+        - parse the data
+        - create a form
+        - on click of a button, all images are loaded
+        - once images are assessed, user clicks button again
+        - next lot of images is shown
+        - user has to manually delete files as necessary
+     -->
     <script type="text/javascript" defer>
         const CSV_CONTENTS = ``;
+        const csvRows = CSV_CONTENTS.split("\n");
+        const rowIndex = 1; // start at 1 to ignore row headers
     </script>
 </body>
 
