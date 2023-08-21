@@ -33,13 +33,16 @@
      -->
     <h1>iCloud Duplicate Finder</h1>
     <p>Current row: <span id="current-row">n/a</span></p>
-    <button>Start/New Row</button>
+    <button onclick="displayImages()">Start/New Row</button>
     <main id="image-section"></main>
 
     <script type="text/javascript" defer>
         const CSV_CONTENTS = ``;
         const csvRows = CSV_CONTENTS.split("\n");
         const rowIndex = 1; // start at 1 to ignore row headers
+
+        function displayImages() {
+        }
     </script>
 </body>
 
