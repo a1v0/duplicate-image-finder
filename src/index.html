@@ -21,13 +21,6 @@
 </head>
 
 <body>
-    <!-- 
-        Plan:
-        - on click of a button, all images are loaded
-        - once images are assessed, user clicks button again
-        - next lot of images is shown
-        - user has to manually delete files as necessary
-     -->
     <h1>iCloud Duplicate Finder</h1>
     <p>Current row: <span id="current-row">n/a</span></p>
     <button onclick="displayImages()">Start/New Row</button>
@@ -36,9 +29,8 @@
     <script type="text/javascript" defer>
         /**
          * CSV goes here!
-        */
-        const CSV_CONTENTS =
-            `1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20
+         */
+        const CSV_CONTENTS = `1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20
 IMG_4551 - Copy.JPG,IMG_4551.JPG`;
 
         const baseURL = "file:///C:/Users/mensu/Desktop/test-image-folder/";
@@ -54,13 +46,13 @@ IMG_4551 - Copy.JPG,IMG_4551.JPG`;
 
             const fileNames = csvRows[rowIndex].split(",");
             fileNames.forEach((fileName) => {
-                const header = document.createElement("h2")
+                const header = document.createElement("h2");
                 header.innerText = fileName;
                 imageSection.appendChild(header);
                 const image = document.createElement("img");
                 image.src = baseURL + fileName;
-                imageSection.appendChild(image)
-            })
+                imageSection.appendChild(image);
+            });
 
             ++rowIndex;
         }
