@@ -34,15 +34,34 @@
     <main id="image-section"></main>
 
     <script type="text/javascript" defer>
-        const CSV_CONTENTS = ``;
+        /**
+         * CSV goes here!
+        */
+        const CSV_CONTENTS =
+            `1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20
+IMG_4551 - Copy.JPG,IMG_4551.JPG`;
+
+        const baseURL = "file:///C:/Users/mensu/Desktop/test-image-folder/";
 
         const csvRows = CSV_CONTENTS.split("\n");
         let rowIndex = 1; // start at 1 to ignore row headers
 
         const rowCounter = document.getElementById("current-row");
+        const imageSection = document.getElementById("image-section");
 
         function displayImages() {
             rowCounter.innerText = rowIndex;
+
+            const fileNames = csvRows[rowIndex].split(",");
+            fileNames.forEach((fileName) => {
+                const header = document.createElement("h2")
+                header.innerText = fileName;
+                imageSection.appendChild(header);
+                const image = document.createElement("img");
+                image.src = baseURL + fileName;
+                imageSection.appendChild(image)
+            })
+
             ++rowIndex;
         }
     </script>
