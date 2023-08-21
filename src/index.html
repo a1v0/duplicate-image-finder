@@ -23,9 +23,6 @@
 <body>
     <!-- 
         Plan:
-        - import CSV file somehow (might have to be hard-coded)
-        - parse the data
-        - create a form
         - on click of a button, all images are loaded
         - once images are assessed, user clicks button again
         - next lot of images is shown
@@ -38,10 +35,15 @@
 
     <script type="text/javascript" defer>
         const CSV_CONTENTS = ``;
+
         const csvRows = CSV_CONTENTS.split("\n");
-        const rowIndex = 1; // start at 1 to ignore row headers
+        let rowIndex = 1; // start at 1 to ignore row headers
+
+        const rowCounter = document.getElementById("current-row");
 
         function displayImages() {
+            rowCounter.innerText = rowIndex;
+            ++rowIndex;
         }
     </script>
 </body>
